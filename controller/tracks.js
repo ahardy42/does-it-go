@@ -22,7 +22,7 @@ module.exports = {
     addTrack: async (req, res, next) => {
         try {
             // send the file to the service to parse GPX and return a GeoJSON object
-            let newTrack = await tracksService.parseGPX(req.files[0]);
+            let newTrack = tracksService.parseGPX(req.files[0]);
             let track = await db.Tracks.create(newTrack);
             res.json(track);
         } catch (error) {

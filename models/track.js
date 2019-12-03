@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Tracks.associate = (models) => {
-        Tracks.belongsTo(models.User, {
+        Tracks.belongsTo(models.Users, {
             foreignKey: {
                 allowNull: false
             }
