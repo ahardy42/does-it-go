@@ -1,0 +1,24 @@
+{
+    "development": {
+        "username": "katiehardy",
+        "password": null,
+        "database": "does_it_go",
+        "host": "127.0.0.1",
+        "dialect": "postgres",
+        "operatorsAliases": false
+    },
+    "test": {
+        "username": "postgres",
+        "password": "postgres",
+        "database": "gpx_upload",
+        "host": "127.0.0.1",
+        "dialect": "postgres",
+        "operatorsAliases": false
+    },
+    "production": {
+        "database": "does_it_go",
+        "host": "127.0.0.1",
+        "dialect": "postgres",
+        "operatorsAliases": false
+    }
+}
