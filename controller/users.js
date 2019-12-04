@@ -7,9 +7,9 @@ module.exports = {
         let { user } = req;
 
         try {
-            let userInfo = await db.User.find({
+            let userInfo = await db.Users.findOne({
                 where: {
-                    _id: user.id
+                    id: user.id
                 }
             });
             res.json(userInfo);
@@ -23,7 +23,12 @@ module.exports = {
         let { user, body } = req;
 
         try {
-            let updatedUser = await db.User.update({where: {_id: user.id}}, body);
+            // find the user
+            let foundUser = await db.Users.findOne({where: {id: user.id}});
+
+            // use the update instance method to return the updated user
+            let updatedUser = await foundUser.update(body);
+
             res.json(updatedUser);
         } catch (error) {
             next(error);
@@ -35,14 +40,16 @@ module.exports = {
         let { user } = req;
 
         try {
-            let isDeleted = await db.User.destroy({
+            let isDeleted = await db.Users.destroy({
                 where: {
-                    _id: user.id
+                    id: user.id
                 }
             });
 
             if (isDeleted === 1) {
+                // the user is deleted, logout the user to end the session and then return the number 1 to the front end
                 req.logout();
+                res.status(200).json(isDeleted);
             } else {
                 // the delete didn't work so, inform the user
                 res.status(400).json(isDeleted);

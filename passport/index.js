@@ -4,10 +4,10 @@ const LocalStrategy = require("passport-local").Strategy;
 const db = require("../models");
 
 passport.use(new LocalStrategy(
-    {usernameField: 'username'},
+    { usernameField: 'username' },
     (username, password, done) => {
         // find a user w/ that unique username
-        db.User.findOne({
+        db.Users.findOne({
             where: {
                 username: username
             }
@@ -25,11 +25,11 @@ passport.use(new LocalStrategy(
 
 passport.serializeUser((user, cb) => {
     cb(null, user);
-  });
-  
-  passport.deserializeUser((obj, cb) => {
+});
+
+passport.deserializeUser((obj, cb) => {
     cb(null, obj);
-  });
-  
-  // Exporting our configured passport
-  module.exports = passport;
+});
+
+// Exporting our configured passport
+module.exports = passport;

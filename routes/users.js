@@ -7,13 +7,13 @@ const authenticate = require('./middleware/authenticate');
 // create user essentially already exists in the signup route
 
 // get a user => /api/users/:id
-router.get('/:id', authenticate.isLoggedIn, usersController.getOne);
+router.get('/', authenticate.isLoggedIn, usersController.getOne);
 
 // edit a user => /api/users/:id
-router.put('/:id', authenticate.isLoggedIn, usersController.editOne);
+router.put('/', authenticate.isLoggedIn, usersController.editOne);
 
 // delete a user => /api/users/:id
-router.delete('/:id', authenticate.isLoggedIn, usersController.deleteOne);
+router.delete('/', authenticate.isLoggedIn, usersController.deleteOne);
 
 
 module.exports = router;
