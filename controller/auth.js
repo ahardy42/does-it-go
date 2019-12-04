@@ -13,14 +13,14 @@ module.exports = {
         const { name, username, password } = req.body;
 
         // create the user!
-        db.User.create({
+        db.Users.create({
             name: name,
             username: username,
             password: password
         }).then(() => {
 
             // re-direct to login which will authenticate using middleware
-            res.redirect(307, '/login');
+            res.redirect(307, '/api/auth/login');
 
         }).catch(error => {
 
@@ -32,6 +32,8 @@ module.exports = {
     logout: (req, res, next) => {
 
         req.logout();
+
+        res.end();
 
     }
 }
