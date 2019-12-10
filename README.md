@@ -23,7 +23,7 @@ Version Control
 
 git / GitHub for version control
 
-CI / CD
+CI / CD (future)
 
 - Jest / Enzyme on the front end and Mocha / Chai on the server side for testing
 - Travis CI for integrating pull requests, testing and deployment to Heroku
