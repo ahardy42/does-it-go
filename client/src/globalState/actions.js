@@ -7,6 +7,8 @@ import { authAPI, userAPI, tracksAPI } from '../utils'
 export const LOGIN_USER = 'LOGIN_USER';
 export const SIGNUP_USER = 'SIGNUP_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
+export const SEND_RESET_KEY = 'SEND_RESET_KEY';
+export const RESET_PASSWORD = 'RESET_PASSWORD';
 
 export const SET_USER = 'SET_USER';
 export const UPDATE_USER = 'UPDATE_USER';
@@ -33,9 +35,14 @@ const logoutUser = () => ({
     type: LOGOUT_USER
 });
 
+const sendResetKey = () => ({
+    type: SEND_RESET_KEY
+});
+
 /**
  * thunks for signup login and logout
  */
+
 export const login = user => async dispatch => {
     try {
         // this is a fetch from the utility functions
@@ -64,6 +71,19 @@ export const logout = () => async dispatch => {
         if (bool) return dispatch(logoutUser());
 
         throw new Error('something happened, user not logged out!');
+        
+    } catch (error) {
+        console.error(error); // for now
+    }
+}
+
+export const sendResetKeyThunk = username => async dispatch => {
+    try {
+        let bool = await authAPI.setupKey(username);
+
+        if (bool) return dispatch(sendResetKey());
+
+        throw new Error('something happened! reset key not set');
         
     } catch (error) {
         console.error(error); // for now

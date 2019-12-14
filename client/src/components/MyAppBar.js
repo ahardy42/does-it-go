@@ -12,6 +12,8 @@ const links = page => {
     switch (page) {
         case 'login':
             return <Link color='inherit' component={RouterLink} to='/signup'>Signup</Link>;
+        case 'signup':
+            return <Link color='inherit' component={RouterLink} to='/login'>Login</Link>;
         default: 
             return 
     }

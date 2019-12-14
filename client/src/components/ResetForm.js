@@ -3,10 +3,8 @@ import {
     Button,
     Container,
     TextField,
-    Paper,
-    Link
+    Paper
 } from '@material-ui/core';
-import { Link as RouterLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles( theme => ({
@@ -28,50 +26,38 @@ const useStyles = makeStyles( theme => ({
         marginTop: '1em'
     },
     button: {
-        marginTop: '2em',
-        marginBottom: '2em'
+        marginTop: '2em'
     }
-}))
+}));
 
-const LoginForm = ({ formState, handleChange, handleSubmit, ...props }) => {
-    
+const ResetForm = ({ formState, handleChange, handleSubmit, ...props }) => {
+
     const classes = useStyles(props);
 
     return (
         <Container className={classes.root}>
-            <form id='login-form' className={classes.form}>
+            <form id='reset-form' className={classes.form}>
                 <Paper className={classes.paper}>
-                    <TextField
+                    <TextField 
                         name='SET_USERNAME'
                         value={formState.username}
-                        label='Username'
-                        variant='outlined'
-                        onChange={handleChange}
-                        className={classes.input}
-                    />
-                    <TextField
-                        name='SET_PASSWORD'
-                        value={formState.password}
-                        label='Password'
-                        type='password'
+                        label='Enter Username'
                         variant='outlined'
                         onChange={handleChange}
                         className={classes.input}
                     />
                     <Button
-                        id='LOGIN_USER'
+                        id='SEND_RESET_KEY'
                         onClick={handleSubmit}
                         variant='contained'
                         className={classes.button}
                     >
                         Submit!
                     </Button>
-                    <Link color='inherit' component={RouterLink} to='/reset'>Forgot your username/password?</Link>
                 </Paper>
             </form>
         </Container>
     );
 }
 
-// injecting some dispatch funcs into this form
-export default LoginForm;
+export default ResetForm;

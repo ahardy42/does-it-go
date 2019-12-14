@@ -9,7 +9,7 @@ const Authenticated = () => {
     return (
         <Router>
             <Switch>
-                <Route path='/map'>
+                {/* <Route path='/map'>
                     <Map />
                 </Route>
                 <Route path='/trails'>
@@ -20,7 +20,7 @@ const Authenticated = () => {
                 </Route>
                 <Route path='/edit/user'>
                     <EditUser />
-                </Route>
+                </Route> */}
             </Switch>
         </Router>
     );
